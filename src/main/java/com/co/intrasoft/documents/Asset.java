@@ -1,5 +1,6 @@
 package com.co.intrasoft.documents;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -35,6 +36,7 @@ public class Asset {
 		this.id = id;
 	}
 
+	@NotEmpty(message = "Name cannot be void")
 	public String getName() {
 		return name;
 	}
@@ -43,6 +45,7 @@ public class Asset {
 		this.name = name;
 	}
 
+	@NotEmpty(message = "Description cannot be void")
 	public String getDescription() {
 		return description;
 	}
@@ -51,6 +54,7 @@ public class Asset {
 		this.description = description;
 	}
 
+	@NotEmpty(message = "Type cannot be void")
 	public String getType() {
 		return type;
 	}
@@ -59,6 +63,7 @@ public class Asset {
 		this.type = type;
 	}
 
+	@NotEmpty(message = "Serial cannot be void")
 	public String getSerial() {
 		return serial;
 	}
@@ -67,6 +72,7 @@ public class Asset {
 		this.serial = serial;
 	}
 
+	@NotEmpty(message = "Internal inventory number cannot be void")
 	public String getInvNumber() {
 		return invNumber;
 	}
@@ -75,6 +81,7 @@ public class Asset {
 		this.invNumber = invNumber;
 	}
 
+	@NotEmpty(message = "Weight cannot be void")
 	public String getWeight() {
 		return weight;
 	}
@@ -83,6 +90,7 @@ public class Asset {
 		this.weight = weight;
 	}
 
+	@NotEmpty(message = "High cannot be void")
 	public String getHigh() {
 		return high;
 	}
@@ -91,6 +99,7 @@ public class Asset {
 		this.high = high;
 	}
 
+	@NotEmpty(message = "Wide cannot be void")
 	public String getWide() {
 		return wide;
 	}
@@ -99,6 +108,7 @@ public class Asset {
 		this.wide = wide;
 	}
 
+	@NotEmpty(message = "Length cannot be void")
 	public String getLength() {
 		return length;
 	}
@@ -107,6 +117,7 @@ public class Asset {
 		this.length = length;
 	}
 
+	@NotEmpty(message = "Value of purchase cannot be void")
 	public String getValue() {
 		return value;
 	}
@@ -115,6 +126,7 @@ public class Asset {
 		this.value = value;
 	}
 
+	@NotEmpty(message = "Date of purchase cannot be void")
 	public String getpDate() {
 		return pDate;
 	}
@@ -123,6 +135,7 @@ public class Asset {
 		this.pDate = pDate;
 	}
 
+	@NotEmpty(message = "Discharge date cannot be void")
 	public String getdDate() {
 		return dDate;
 	}
@@ -131,6 +144,7 @@ public class Asset {
 		this.dDate = dDate;
 	}
 
+	@NotEmpty(message = "Actual state cannot be void")
 	public String getState() {
 		return state;
 	}
@@ -139,6 +153,7 @@ public class Asset {
 		this.state = state;
 	}
 
+	@NotEmpty(message = "Color cannot be void")
 	public String getColor() {
 		return color;
 	}
@@ -147,6 +162,7 @@ public class Asset {
 		this.color = color;
 	}
 
+	@NotEmpty(message = "Assignment cannot be void")
 	public String getAssignment() {
 		return assignment;
 	}
