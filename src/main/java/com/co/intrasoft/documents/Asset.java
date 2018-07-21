@@ -1,8 +1,14 @@
 package com.co.intrasoft.documents;
 
+import java.util.Date;
+
+import javax.validation.constraints.Past;
+
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Document
 public class Asset {
@@ -19,11 +25,16 @@ public class Asset {
 	private String wide;
 	private String length;
 	private String value;
-	private String pDate;
-	private String dDate;
 	private String state;
 	private String color;
 	private String assignment;
+	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+	@Past
+	private Date pDate;
+	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+	private Date dDate;
 	
 	public Asset() {	
 	}
@@ -127,20 +138,20 @@ public class Asset {
 	}
 
 	@NotEmpty(message = "Date of purchase cannot be void")
-	public String getpDate() {
+	public Date getpDate() {
 		return pDate;
 	}
 
-	public void setpDate(String pDate) {
+	public void setpDate(Date pDate) {
 		this.pDate = pDate;
 	}
 
 	@NotEmpty(message = "Discharge date cannot be void")
-	public String getdDate() {
+	public Date getdDate() {
 		return dDate;
 	}
 
-	public void setdDate(String dDate) {
+	public void setdDate(Date dDate) {
 		this.dDate = dDate;
 	}
 
