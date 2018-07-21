@@ -16,7 +16,6 @@ public class Asset {
 
 	@Id
 	private String id;
-	
 	private String name;
 	private String description;
 	private String type;
@@ -27,7 +26,6 @@ public class Asset {
 	private String wide;
 	private String length;
 	private String value;
-	private String state;
 	private String color;
 	private Assignment assignment;
 	
@@ -156,15 +154,6 @@ public class Asset {
 
 	public void setdDate(Date dDate) {
 		this.dDate = dDate;
-	}
-
-	@NotEmpty(message = "Actual state cannot be void")
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
 	}
 
 	@NotEmpty(message = "Color cannot be void")
