@@ -40,6 +40,10 @@ public class AssetController {
 			return ResponseEntity.badRequest().body(new Response<Asset>(errors));
 		}
 		
+		if(asset.getpDate().after(asset.getdDate())) {
+			return ResponseEntity.badRequest().body(new Response("fecha de baja debe ser superior a fecha de compra"));
+		}
+		
 		return ResponseEntity.ok(new Response<Asset>(this.assetService.create(asset)));
 	}
 	
