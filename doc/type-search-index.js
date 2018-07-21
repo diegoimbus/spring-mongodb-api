@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"com.co.intrasoft.controllers","l":"AssetController"}]

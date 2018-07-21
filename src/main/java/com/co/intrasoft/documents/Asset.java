@@ -2,9 +2,6 @@ package com.co.intrasoft.documents;
 
 import java.util.Date;
 
-import javax.validation.constraints.Future;
-import javax.validation.constraints.Past;
-
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
