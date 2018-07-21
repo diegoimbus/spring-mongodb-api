@@ -2,6 +2,7 @@ package com.co.intrasoft.documents;
 
 import java.util.Date;
 
+import javax.validation.constraints.Future;
 import javax.validation.constraints.Past;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -15,6 +16,7 @@ public class Asset {
 
 	@Id
 	private String id;
+	
 	private String name;
 	private String description;
 	private String type;
@@ -27,13 +29,14 @@ public class Asset {
 	private String value;
 	private String state;
 	private String color;
-	private String assignment;
+	private Assignment assignment;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	@Past
 	private Date pDate;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+	@Future
 	private Date dDate;
 	
 	public Asset() {	
@@ -174,11 +177,11 @@ public class Asset {
 	}
 
 	@NotEmpty(message = "Assignment cannot be void")
-	public String getAssignment() {
+	public Assignment getAssignment() {
 		return assignment;
 	}
 
-	public void setAssignment(String assignment) {
+	public void setAssignment(Assignment assignment) {
 		this.assignment = assignment;
 	}
 }
