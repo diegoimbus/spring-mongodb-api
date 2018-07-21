@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.co.intrasoft.services.AssetService;
 import com.co.intrasoft.documents.Asset;
+import com.co.intrasoft.documents.Assignment;
 import com.co.intrasoft.responses.Response;
 
 @RestController
@@ -34,17 +35,26 @@ public class AssetController {
 	
 	@PostMapping
 	public ResponseEntity<Response<Asset>> create(@Valid @RequestBody Asset asset, BindingResult result) {
-		if (result.hasErrors() ) {
-			List<String> errors = new ArrayList<String>();
-			result.getAllErrors().forEach(error -> errors.add(error.getDefaultMessage()));
-			return ResponseEntity.badRequest().body(new Response<Asset>(errors));
+		if (result.hasErrors()) {
+			List<String> erros = new ArrayList<String>();
+			result.getAllErrors().forEach(erro -> erros.add(erro.getDefaultMessage()));
+			
+			return ResponseEntity.badRequest().body(new Response<Asset>(erros));
 		}
 		
-		if(asset.getpDate().after(asset.getdDate())) {
+		if(asset.getpDate().after(asset.getdDate())) 
 			return ResponseEntity.badRequest().body(new Response("fecha de baja debe ser superior a fecha de compra"));
-		}
 		
-		return ResponseEntity.ok(new Response<Asset>(this.assetService.create(asset)));
+		if(asset.getAssignment().getState() == Assignment.ACTIVO || 
+				asset.getAssignment().getState() == Assignment.ASIGNADO || 
+				asset.getAssignment().getState() == Assignment.DADO_DE_BAJA ||
+				asset.getAssignment().getState() == Assignment.DISPONIBLE ||
+				asset.getAssignment().getState() == Assignment.EN_REPARACION) 
+			return ResponseEntity.ok(new Response<Asset>(this.assetService.create(asset)));
+		
+		else 
+			return ResponseEntity.badRequest().build();
+		
 	}
 	
 	@PatchMapping(path = "/{id}")
