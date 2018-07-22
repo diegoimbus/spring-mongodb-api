@@ -31,6 +31,6 @@ public interface AssetService {
 	 * @param asset Asset to be updated.
 	 * @return Returns the object updated
 	 */
-	Asset update(Asset asset, String value);
+	Asset update(Asset asset, String value, String key);
 
 }

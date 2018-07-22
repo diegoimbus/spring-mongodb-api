@@ -95,8 +95,9 @@ public class AssetController {
 	 * @param result Argument to validate method.
 	 * @return Returns a confirmation or an error message about the request
 	 */
-	@PatchMapping(path = "/updateSerial/{id}")
+	@PatchMapping(path = "/update/{id}")
 	public ResponseEntity<Response<Asset>> update(@PathVariable(name = "id") String id, @RequestBody Asset asset, BindingResult result) {
+		
 		if (result.hasErrors() ) {
 			List<String> errors = new ArrayList<String>();
 			result.getAllErrors().forEach(error -> errors.add(error.getDefaultMessage()));
@@ -105,8 +106,8 @@ public class AssetController {
 		}
 		
 		asset.setId(id);
-
-		return ResponseEntity.ok(new Response<Asset>(this.assetService.update(asset, asset.getSerial())));
+		
+		return ResponseEntity.ok(new Response<Asset>(this.assetService.update(asset, asset.getSerial(), asset.getdDate())));
 	}
 	
 }

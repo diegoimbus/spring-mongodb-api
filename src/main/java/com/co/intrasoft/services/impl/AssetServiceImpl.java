@@ -23,7 +23,7 @@ import com.co.intrasoft.services.AssetService;
 public class AssetServiceImpl implements AssetService {
 
 	@Autowired
-	MongoTemplate mongoTemplate;
+	private MongoTemplate mongoTemplate;
 	
 	@Autowired
 	private AssetRepository assetRepository;
@@ -48,11 +48,14 @@ public class AssetServiceImpl implements AssetService {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Asset update(Asset asset, String sr) {
+	public Asset update(Asset asset, String sr, String dDate) {
 		
 		Query query = new Query(Criteria.where("id").is(asset.getId()));
 		Update update = new Update();
 		update.set("serial", sr);
+		mongoTemplate.updateFirst(query, update, Asset.class);
+		
+		update.set("dDate", dDate);
 		mongoTemplate.updateFirst(query, update, Asset.class);
 		
 		return this.assetRepository.findOne(asset.getId());
