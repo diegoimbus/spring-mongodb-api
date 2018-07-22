@@ -24,7 +24,7 @@ public class Asset {
 	private String pDate; // yyyy-MM-dd
 	private String dDate; // yyyy-MM-dd
 	
-	public Asset() {	
+	public Asset() {
 	}
 
 	public String getId() {

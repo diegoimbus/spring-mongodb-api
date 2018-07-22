@@ -51,6 +51,7 @@ public class AssetServiceImpl implements AssetService {
 	public Asset update(Asset asset, String sr, String dDate) {
 		
 		Query query = new Query(Criteria.where("id").is(asset.getId()));
+		
 		Update update = new Update();
 		update.set("serial", sr);
 		mongoTemplate.updateFirst(query, update, Asset.class);

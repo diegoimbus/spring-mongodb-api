@@ -71,10 +71,15 @@ public class AssetController {
 			return ResponseEntity.badRequest().body(new Response<Asset>(erros));
 		}
 		
-		if(dp.parseDate(asset.getpDate()).after(dp.parseDate(asset.getdDate()))) 
-			return ResponseEntity.badRequest().body(new Response(i18N.messageSource()
-					.getMessage("dates.txt", null, Locale.getDefault())));
-		
+		try {
+			if(dp.parseDate(asset.getpDate()).after(dp.parseDate(asset.getdDate()))) 
+				return ResponseEntity.badRequest().body(new Response(i18N.messageSource()
+						.getMessage("dates.txt", null, Locale.getDefault())));
+		}catch (NullPointerException e) {
+			return ResponseEntity.badRequest().body(new Response(new Response(i18N.messageSource()
+					.getMessage("state.txt", null, Locale.getDefault()))));
+		}
+
 		if(asset.getAssignment().getState() == Assignment.ACTIVO || 
 				asset.getAssignment().getState() == Assignment.ASIGNADO || 
 				asset.getAssignment().getState() == Assignment.DADO_DE_BAJA ||
