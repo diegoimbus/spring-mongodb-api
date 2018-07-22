@@ -16,5 +16,5 @@ import com.co.intrasoft.documents.Asset;
  *
  */
 public interface AssetRepository extends MongoRepository<Asset, String> {
-
+	
 }

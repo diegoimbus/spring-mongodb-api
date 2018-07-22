@@ -56,7 +56,7 @@ public class AssetController {
 	 * 
 	 * @param asset Data to be saved.
 	 * @param result Argument to validate method.
-	 * @return Returns a confirmation or an error message
+	 * @return Returns a confirmation or an error message about the request
 	 */
 	@PostMapping
 	public ResponseEntity<Response<Asset>> create(@Valid @RequestBody Asset asset, BindingResult result) {
@@ -93,10 +93,10 @@ public class AssetController {
 	 * @param id ID of the object to update.
 	 * @param asset Object to update.
 	 * @param result Argument to validate method.
-	 * @return Returns a confirmation or an error message
+	 * @return Returns a confirmation or an error message about the request
 	 */
-	@PatchMapping(path = "/{id}")
-	public ResponseEntity<Response<Asset>> update(@PathVariable(name = "id") String id, @Valid @RequestBody Asset asset, BindingResult result) {
+	@PatchMapping(path = "/updateSerial/{id}")
+	public ResponseEntity<Response<Asset>> update(@PathVariable(name = "id") String id, @RequestBody Asset asset, BindingResult result) {
 		if (result.hasErrors() ) {
 			List<String> errors = new ArrayList<String>();
 			result.getAllErrors().forEach(error -> errors.add(error.getDefaultMessage()));
@@ -105,7 +105,8 @@ public class AssetController {
 		}
 		
 		asset.setId(id);
-		return ResponseEntity.ok(new Response<Asset>(this.assetService.update(asset)));
+
+		return ResponseEntity.ok(new Response<Asset>(this.assetService.update(asset, asset.getSerial())));
 	}
 	
 }
