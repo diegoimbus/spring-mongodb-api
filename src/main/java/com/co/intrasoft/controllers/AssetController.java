@@ -1,7 +1,6 @@
 package com.co.intrasoft.controllers;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -15,13 +14,13 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.co.intrasoft.services.AssetService;
 import com.co.intrasoft.documents.Asset;
 import com.co.intrasoft.documents.Assignment;
+import com.co.intrasoft.i18N.I18N;
 import com.co.intrasoft.responses.Response;
 import com.co.intrasoft.parsers.DateParser;
 /**
@@ -58,10 +57,12 @@ public class AssetController {
 	 * @param result Argument to validate method.
 	 * @return Returns a confirmation or an error message about the request
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@PostMapping
 	public ResponseEntity<Response<Asset>> create(@Valid @RequestBody Asset asset, BindingResult result) {
 		
 		DateParser dp = new DateParser();
+		I18N i18N = new I18N();
 		
 		if (result.hasErrors()) {
 			List<String> erros = new ArrayList<String>();
@@ -71,7 +72,8 @@ public class AssetController {
 		}
 		
 		if(dp.parseDate(asset.getpDate()).after(dp.parseDate(asset.getdDate()))) 
-			return ResponseEntity.badRequest().body(new Response(""));
+			return ResponseEntity.badRequest().body(new Response(i18N.messageSource()
+					.getMessage("dates.txt", null, Locale.getDefault())));
 		
 		if(asset.getAssignment().getState() == Assignment.ACTIVO || 
 				asset.getAssignment().getState() == Assignment.ASIGNADO || 
@@ -81,7 +83,8 @@ public class AssetController {
 			return ResponseEntity.ok(new Response<Asset>(this.assetService.create(asset)));
 		
 		else 
-			return ResponseEntity.badRequest().body(new Response(""));
+			return ResponseEntity.badRequest().body(new Response(i18N.messageSource()
+					.getMessage("state.txt", null, Locale.getDefault())));
 		
 	}
 	
