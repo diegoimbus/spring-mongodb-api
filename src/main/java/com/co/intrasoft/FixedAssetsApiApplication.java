@@ -18,4 +18,5 @@ public class FixedAssetsApiApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(FixedAssetsApiApplication.class, args);
 	}
+	
 }

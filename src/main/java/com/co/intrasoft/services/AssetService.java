@@ -13,7 +13,7 @@ public interface AssetService {
 	/**
 	 * This method show all the documents in the database
 	 * 
-	 * @return Return all elements in the database
+	 * @return Returns all elements in the database
 	 */
 	List<Asset> listAll();
 	
@@ -21,7 +21,7 @@ public interface AssetService {
 	 * This method save a new asset in the database
 	 * 
 	 * @param New asset to save in the database.
-	 * @return Return the object created 
+	 * @return Returns the object created 
 	 */
 	Asset create(Asset asset);
 	
@@ -29,7 +29,7 @@ public interface AssetService {
 	 * This method update an element of the database  
 	 * 
 	 * @param asset Asset to be updated.
-	 * @return Return the object updated
+	 * @return Returns the object updated
 	 */
 	Asset update(Asset asset);
 

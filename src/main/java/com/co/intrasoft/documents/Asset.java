@@ -2,6 +2,9 @@ package com.co.intrasoft.documents;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -25,12 +28,8 @@ public class Asset {
 	private String value;
 	private String color;
 	private Assignment assignment;
-	
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-	private Date pDate;
-	
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-	private Date dDate;
+	private String pDate; // yyyy-MM-dd
+	private String dDate; // yyyy-MM-dd
 	
 	public Asset() {	
 	}
@@ -134,20 +133,20 @@ public class Asset {
 	}
 
 	@NotEmpty(message = "Date of purchase cannot be void")
-	public Date getpDate() {
+	public String getpDate() {
 		return pDate;
 	}
 
-	public void setpDate(Date pDate) {
+	public void setpDate(String pDate) {
 		this.pDate = pDate;
 	}
 
 	@NotEmpty(message = "Discharge date cannot be void")
-	public Date getdDate() {
+	public String getdDate() {
 		return dDate;
 	}
 
-	public void setdDate(Date dDate) {
+	public void setdDate(String dDate) {
 		this.dDate = dDate;
 	}
 
@@ -160,11 +159,12 @@ public class Asset {
 		this.color = color;
 	}
 
-	@NotEmpty(message = "Assignment cannot be void")
+
 	public Assignment getAssignment() {
 		return assignment;
 	}
 
+	
 	public void setAssignment(Assignment assignment) {
 		this.assignment = assignment;
 	}
