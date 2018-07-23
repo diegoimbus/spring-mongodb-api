@@ -7,6 +7,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class Asset {
 
+	public static final String ACTIVO = "1";
+	public static final String DADO_DE_BAJA = "2";
+	public static final String EN_REPARACION = "3";
+	public static final String DISPONIBLE = "4";
+	public static final String ASIGNADO = "5";
+	
 	@Id
 	private String id;
 	private String name;
@@ -23,6 +29,7 @@ public class Asset {
 	private Assignment assignment;
 	private String pDate; // yyyy-MM-dd
 	private String dDate; // yyyy-MM-dd
+	private String state;
 	
 	public Asset() {
 	}
@@ -161,4 +168,14 @@ public class Asset {
 	public void setAssignment(Assignment assignment) {
 		this.assignment = assignment;
 	}
+
+	@NotEmpty(message = "State cannot be void")
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+	
 }

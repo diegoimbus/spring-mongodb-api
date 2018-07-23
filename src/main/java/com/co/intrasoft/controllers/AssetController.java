@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.co.intrasoft.services.AssetService;
 import com.co.intrasoft.documents.Asset;
-import com.co.intrasoft.documents.Assignment;
 import com.co.intrasoft.i18N.I18N;
 import com.co.intrasoft.responses.Response;
 import com.co.intrasoft.parsers.DateParser;
@@ -77,14 +76,14 @@ public class AssetController {
 						.getMessage("dates.txt", null, Locale.getDefault())));
 		}catch (NullPointerException e) {
 			return ResponseEntity.badRequest().body(new Response(new Response(i18N.messageSource()
-					.getMessage("state.txt", null, Locale.getDefault()))));
+					.getMessage("exception.txt", null, Locale.getDefault()))));
 		}
 
-		if(asset.getAssignment().getState() == Assignment.ACTIVO || 
-				asset.getAssignment().getState() == Assignment.ASIGNADO || 
-				asset.getAssignment().getState() == Assignment.DADO_DE_BAJA ||
-				asset.getAssignment().getState() == Assignment.DISPONIBLE ||
-				asset.getAssignment().getState() == Assignment.EN_REPARACION) 
+		if(asset.getState().equals(Asset.ACTIVO) || 
+				asset.getState().equals(Asset.ASIGNADO) || 
+				asset.getState().equals(Asset.DADO_DE_BAJA) ||
+				asset.getState().equals(Asset.DISPONIBLE) ||
+				asset.getState().equals(Asset.EN_REPARACION)) 
 			return ResponseEntity.ok(new Response<Asset>(this.assetService.create(asset)));
 		
 		else 
