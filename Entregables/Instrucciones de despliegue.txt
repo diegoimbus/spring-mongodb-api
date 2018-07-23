@@ -1,0 +1,13 @@
+Se debe contar con Java 8 o superior
+
+Desde STS se puede abrir y correr como Spring Boot App
+
+1. git clone https://github.com/diegoimbus/spring-mongodb-api.git
+2. cd spring-mongodb-api
+3. mvn install
+4. mvn spring-boot:run
+5. El link de prueba es http://localhost:8080/api/assets para GET y POST
+6. Para actualizar http://localhost:8080/api/assets/update/{id} para PATCH
+7. Se debe usar los datos
+    user, como el usuario predeterminado
+    y el paswword por defecto que suministra la consola de spring

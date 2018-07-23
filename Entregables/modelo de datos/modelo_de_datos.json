@@ -1,0 +1,22 @@
+{
+    "_id": <ObjectId1>,
+    "name": "example",
+    "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+    "type": "type 1",
+    "serial": "123xyz",
+    "invNumber": "123xyz",
+    "weight": "123",
+    "high": "234",
+    "wide": "342",
+    "length": "123",
+    "value": "123",
+    "color": "silver",
+    "pDate": "2000-10-10",
+    "dDate": "2002-10-10",
+    "state": "1",
+    "assignment": 
+    {
+        "personName": null,
+        "areaCity": "example city" 
+    }
+}

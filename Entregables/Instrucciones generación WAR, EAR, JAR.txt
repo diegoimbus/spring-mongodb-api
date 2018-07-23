@@ -1,0 +1,45 @@
+generar con STS/eclipse:
+
+1. Click derecho sobre el proyecto
+2. Export
+3. Seleccionar archivo WAR, JAR o EAR
+4. Seleccionar directorio para guardar el generado
+
+maven desde windows:
+Para generar WAR:
+
+1. En la dirección del proyecto desde cmd:
+    mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes 
+    -DarchetypeArtifactId=maven-archetype-webapp 
+    -DgroupId=<Id del proyecto>
+    -DartifactId=myWar
+
+2. se confirma la versión
+
+3. se compila el proyecto y se empaqueta como .war
+    mvn package war:war
+
+4. se crea en el directorio targe
+
+
+Para generar EAR:
+
+1. mvn install:install-file
+
+    -Dfile=<direccion del proyecto>
+
+    -DgroupId=<Id del proyecto> 
+
+    -DartifactId=myApp
+
+    -Dversion=1.0  
+    -Dpackaging=war
+
+2. mvn package ear:ear
+
+
+Para generar JAR:
+
+1. mvn install
+
+2. mvn package
