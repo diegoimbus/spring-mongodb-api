@@ -11,8 +11,16 @@ public class Assignment {
 	public static final int ASIGNADO = 5;
 	private int state;
 	private String personName;
-	private Area area;
+	private String areaCity;
 	
+	public String getAreaCity() {
+		return areaCity;
+	}
+
+	public void setAreaCity(String areaCity) {
+		this.areaCity = areaCity;
+	}
+
 	public Assignment() {
 	}
 
@@ -31,14 +39,6 @@ public class Assignment {
 
 	public void setPersonName(String personName) {
 		this.personName = personName;
-	}
-
-	public Area getArea() {
-		return area;
-	}
-
-	public void setArea(Area area) {
-		this.area = area;
 	}
 
 }
