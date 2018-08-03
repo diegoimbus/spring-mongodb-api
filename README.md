@@ -7,7 +7,7 @@ mvn spring-boot:run
 Acesse http://localhost:8080/api/assets
 Use user "user" and the password showed in terminal for auth.
 ```
-### APIs endpoints
+### Endpoints
 GET http://localhost:8080/api/assets  [show all the assets]
 
 POST http://localhost:8080/api/assets [create a new asset]  
